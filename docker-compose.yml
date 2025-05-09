@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: launchkit
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - launchkit-net
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "60", "1"]
+    networks:
+      - launchkit-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file: .env
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8000:8000"
+    networks:
+      - launchkit-net
+
+  frontend:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    env_file: .env
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+    ports:
+      - "3000:5173"
+    depends_on:
+      - backend
+    networks:
+      - launchkit-net
+
+volumes:
+  postgres_data:
+
+networks:
+  launchkit-net:
+    driver: bridge
