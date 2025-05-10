@@ -1,0 +1,896 @@
+{
+ "Resources": {
+  "LaunchKitVPC1AD115E9": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/Resource"
+   }
+  },
+  "LaunchKitVPCPublicSubnet1Subnet0CE40889": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.0.0/18",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LaunchKitVPC1AD115E9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/Subnet"
+   }
+  },
+  "LaunchKitVPCPublicSubnet1RouteTable14FED15C": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LaunchKitVPC1AD115E9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/RouteTable"
+   }
+  },
+  "LaunchKitVPCPublicSubnet1RouteTableAssociation66C5DF0B": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "LaunchKitVPCPublicSubnet1RouteTable14FED15C"
+    },
+    "SubnetId": {
+     "Ref": "LaunchKitVPCPublicSubnet1Subnet0CE40889"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/RouteTableAssociation"
+   }
+  },
+  "LaunchKitVPCPublicSubnet1DefaultRoute9C243FE8": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "LaunchKitVPCIGW025DD7CE"
+    },
+    "RouteTableId": {
+     "Ref": "LaunchKitVPCPublicSubnet1RouteTable14FED15C"
+    }
+   },
+   "DependsOn": [
+    "LaunchKitVPCVPCGW5213F745"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/DefaultRoute"
+   }
+  },
+  "LaunchKitVPCPublicSubnet1EIP5AC440E8": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/EIP"
+   }
+  },
+  "LaunchKitVPCPublicSubnet1NATGateway9674B82F": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "LaunchKitVPCPublicSubnet1EIP5AC440E8",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "LaunchKitVPCPublicSubnet1Subnet0CE40889"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet1"
+     }
+    ]
+   },
+   "DependsOn": [
+    "LaunchKitVPCPublicSubnet1DefaultRoute9C243FE8",
+    "LaunchKitVPCPublicSubnet1RouteTableAssociation66C5DF0B"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/NATGateway"
+   }
+  },
+  "LaunchKitVPCPublicSubnet2Subnet08631543": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.64.0/18",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LaunchKitVPC1AD115E9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/Subnet"
+   }
+  },
+  "LaunchKitVPCPublicSubnet2RouteTable1A64718D": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LaunchKitVPC1AD115E9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/RouteTable"
+   }
+  },
+  "LaunchKitVPCPublicSubnet2RouteTableAssociation0C15A362": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "LaunchKitVPCPublicSubnet2RouteTable1A64718D"
+    },
+    "SubnetId": {
+     "Ref": "LaunchKitVPCPublicSubnet2Subnet08631543"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/RouteTableAssociation"
+   }
+  },
+  "LaunchKitVPCPublicSubnet2DefaultRoute3ABD8469": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "LaunchKitVPCIGW025DD7CE"
+    },
+    "RouteTableId": {
+     "Ref": "LaunchKitVPCPublicSubnet2RouteTable1A64718D"
+    }
+   },
+   "DependsOn": [
+    "LaunchKitVPCVPCGW5213F745"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/DefaultRoute"
+   }
+  },
+  "LaunchKitVPCPublicSubnet2EIPA9AD3E10": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/EIP"
+   }
+  },
+  "LaunchKitVPCPublicSubnet2NATGateway1EA96429": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "LaunchKitVPCPublicSubnet2EIPA9AD3E10",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "LaunchKitVPCPublicSubnet2Subnet08631543"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet2"
+     }
+    ]
+   },
+   "DependsOn": [
+    "LaunchKitVPCPublicSubnet2DefaultRoute3ABD8469",
+    "LaunchKitVPCPublicSubnet2RouteTableAssociation0C15A362"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/NATGateway"
+   }
+  },
+  "LaunchKitVPCPrivateSubnet1Subnet2EC925C1": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.128.0/18",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LaunchKitVPC1AD115E9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet1/Subnet"
+   }
+  },
+  "LaunchKitVPCPrivateSubnet1RouteTable1D24AEBB": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LaunchKitVPC1AD115E9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet1/RouteTable"
+   }
+  },
+  "LaunchKitVPCPrivateSubnet1RouteTableAssociationFB95459D": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "LaunchKitVPCPrivateSubnet1RouteTable1D24AEBB"
+    },
+    "SubnetId": {
+     "Ref": "LaunchKitVPCPrivateSubnet1Subnet2EC925C1"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet1/RouteTableAssociation"
+   }
+  },
+  "LaunchKitVPCPrivateSubnet1DefaultRoute7F0A264F": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "LaunchKitVPCPublicSubnet1NATGateway9674B82F"
+    },
+    "RouteTableId": {
+     "Ref": "LaunchKitVPCPrivateSubnet1RouteTable1D24AEBB"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet1/DefaultRoute"
+   }
+  },
+  "LaunchKitVPCPrivateSubnet2SubnetFCEB86B2": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.192.0/18",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LaunchKitVPC1AD115E9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet2/Subnet"
+   }
+  },
+  "LaunchKitVPCPrivateSubnet2RouteTable191742A8": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LaunchKitVPC1AD115E9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet2/RouteTable"
+   }
+  },
+  "LaunchKitVPCPrivateSubnet2RouteTableAssociationDFA4EDFC": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "LaunchKitVPCPrivateSubnet2RouteTable191742A8"
+    },
+    "SubnetId": {
+     "Ref": "LaunchKitVPCPrivateSubnet2SubnetFCEB86B2"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet2/RouteTableAssociation"
+   }
+  },
+  "LaunchKitVPCPrivateSubnet2DefaultRouteA854C366": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "LaunchKitVPCPublicSubnet2NATGateway1EA96429"
+    },
+    "RouteTableId": {
+     "Ref": "LaunchKitVPCPrivateSubnet2RouteTable191742A8"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/PrivateSubnet2/DefaultRoute"
+   }
+  },
+  "LaunchKitVPCIGW025DD7CE": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LaunchKitDatabase/LaunchKitVPC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/IGW"
+   }
+  },
+  "LaunchKitVPCVPCGW5213F745": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "LaunchKitVPCIGW025DD7CE"
+    },
+    "VpcId": {
+     "Ref": "LaunchKitVPC1AD115E9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/LaunchKitVPC/VPCGW"
+   }
+  },
+  "PostgresInstanceSubnetGroup84F90C7C": {
+   "Type": "AWS::RDS::DBSubnetGroup",
+   "Properties": {
+    "DBSubnetGroupDescription": "Subnet group for PostgresInstance database",
+    "SubnetIds": [
+     {
+      "Ref": "LaunchKitVPCPrivateSubnet1Subnet2EC925C1"
+     },
+     {
+      "Ref": "LaunchKitVPCPrivateSubnet2SubnetFCEB86B2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/PostgresInstance/SubnetGroup/Default"
+   }
+  },
+  "PostgresInstanceSecurityGroupCC8FD05A": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Security group for PostgresInstance database",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LaunchKitVPC1AD115E9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/PostgresInstance/SecurityGroup/Resource"
+   }
+  },
+  "LaunchKitDatabasePostgresInstanceSecret5B6A8CA23fdaad7efa858a3daf9490cf0a702aeb": {
+   "Type": "AWS::SecretsManager::Secret",
+   "Properties": {
+    "Description": {
+     "Fn::Join": [
+      "",
+      [
+       "Generated by the CDK for stack: ",
+       {
+        "Ref": "AWS::StackName"
+       }
+      ]
+     ]
+    },
+    "GenerateSecretString": {
+     "ExcludeCharacters": " %+~`#$&*()|[]{}:;<>?!'/@\"\\",
+     "GenerateStringKey": "password",
+     "PasswordLength": 30,
+     "SecretStringTemplate": "{\"username\":\"admin\"}"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/PostgresInstance/Secret/Resource"
+   }
+  },
+  "PostgresInstanceSecretAttachmentDFCC79DF": {
+   "Type": "AWS::SecretsManager::SecretTargetAttachment",
+   "Properties": {
+    "SecretId": {
+     "Ref": "LaunchKitDatabasePostgresInstanceSecret5B6A8CA23fdaad7efa858a3daf9490cf0a702aeb"
+    },
+    "TargetId": {
+     "Ref": "PostgresInstance19CDD68A"
+    },
+    "TargetType": "AWS::RDS::DBInstance"
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/PostgresInstance/Secret/Attachment/Resource"
+   }
+  },
+  "PostgresInstance19CDD68A": {
+   "Type": "AWS::RDS::DBInstance",
+   "Properties": {
+    "AllocatedStorage": "20",
+    "CopyTagsToSnapshot": true,
+    "DBInstanceClass": "db.m5.large",
+    "DBSubnetGroupName": {
+     "Ref": "PostgresInstanceSubnetGroup84F90C7C"
+    },
+    "DeletionProtection": false,
+    "Engine": "postgres",
+    "EngineVersion": "15",
+    "MasterUserPassword": {
+     "Fn::Join": [
+      "",
+      [
+       "{{resolve:secretsmanager:",
+       {
+        "Ref": "LaunchKitDatabasePostgresInstanceSecret5B6A8CA23fdaad7efa858a3daf9490cf0a702aeb"
+       },
+       ":SecretString:password::}}"
+      ]
+     ]
+    },
+    "MasterUsername": "admin",
+    "MaxAllocatedStorage": 100,
+    "MultiAZ": false,
+    "PubliclyAccessible": false,
+    "StorageType": "gp2",
+    "VPCSecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "PostgresInstanceSecurityGroupCC8FD05A",
+       "GroupId"
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/PostgresInstance/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/12OQW/CMAyFfwv3NINqHDgCnVAvU9UirpObeizQJih2qFDV/z6VjLba6dmfn+0Xy9VmLZcLaClS1TWqdSm7gkFdBbT01aGKZXe6KbH/NqdsLzJf1loVvjTIA5uq3HrGI5Q1TnxiWyKrNLC2ZjQPxUeaDfIJfADGFh4ic/oOjNPh1DA6g6MhJPnrtsygfho0LApU3ml+HJz1t2eGOeiFq0h2CTCUQJgaYjAKRfgz7iS7OXi5C1QuhEl2r81e0JNSAwbO6GQXXg7GIEdwZ+RZwtHwf9L3Ikey3g1nja1QXujtHsdy9S6XiwtpHTlvWDco86C/vPUdD7gBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "LaunchKitDatabase/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

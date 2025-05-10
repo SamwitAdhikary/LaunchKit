@@ -1,0 +1,20 @@
+{
+  "version": "41.0.0",
+  "files": {
+    "b1adca412ae8f4298f4d5131d29c9e4a26dc0f24e3c1fb773a06710426ca90e5": {
+      "displayName": "LaunchKitBackend Template",
+      "source": {
+        "path": "LaunchKitBackend.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "b1adca412ae8f4298f4d5131d29c9e4a26dc0f24e3c1fb773a06710426ca90e5.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

@@ -1,0 +1,599 @@
+{
+  "version": "41.0.0",
+  "artifacts": {
+    "LaunchKitDatabase.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "LaunchKitDatabase.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "LaunchKitDatabase": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "LaunchKitDatabase.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/07d303ec9eb13df47801b870b783ba5d005503ba8234f4e25a2e2cd6a01f5d88.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "LaunchKitDatabase.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "LaunchKitDatabase.assets"
+      ],
+      "metadata": {
+        "/LaunchKitDatabase/LaunchKitVPC/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPC1AD115E9"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet1Subnet0CE40889"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet1RouteTable14FED15C"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet1RouteTableAssociation66C5DF0B"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet1DefaultRoute9C243FE8"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet1EIP5AC440E8"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet1NATGateway9674B82F"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet2Subnet08631543"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet2RouteTable1A64718D"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet2RouteTableAssociation0C15A362"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet2DefaultRoute3ABD8469"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet2EIPA9AD3E10"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PublicSubnet2/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPublicSubnet2NATGateway1EA96429"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PrivateSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPrivateSubnet1Subnet2EC925C1"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PrivateSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPrivateSubnet1RouteTable1D24AEBB"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PrivateSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPrivateSubnet1RouteTableAssociationFB95459D"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PrivateSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPrivateSubnet1DefaultRoute7F0A264F"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PrivateSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPrivateSubnet2SubnetFCEB86B2"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PrivateSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPrivateSubnet2RouteTable191742A8"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PrivateSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPrivateSubnet2RouteTableAssociationDFA4EDFC"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/PrivateSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCPrivateSubnet2DefaultRouteA854C366"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCIGW025DD7CE"
+          }
+        ],
+        "/LaunchKitDatabase/LaunchKitVPC/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitVPCVPCGW5213F745"
+          }
+        ],
+        "/LaunchKitDatabase/PostgresInstance/SubnetGroup/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PostgresInstanceSubnetGroup84F90C7C"
+          }
+        ],
+        "/LaunchKitDatabase/PostgresInstance/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PostgresInstanceSecurityGroupCC8FD05A"
+          }
+        ],
+        "/LaunchKitDatabase/PostgresInstance/Secret/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchKitDatabasePostgresInstanceSecret5B6A8CA23fdaad7efa858a3daf9490cf0a702aeb"
+          }
+        ],
+        "/LaunchKitDatabase/PostgresInstance/Secret/Attachment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PostgresInstanceSecretAttachmentDFCC79DF"
+          }
+        ],
+        "/LaunchKitDatabase/PostgresInstance/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PostgresInstance19CDD68A"
+          }
+        ],
+        "/LaunchKitDatabase/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/LaunchKitDatabase/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/LaunchKitDatabase/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/LaunchKitDatabase/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "LaunchKitDatabase"
+    },
+    "LaunchKitBackend.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "LaunchKitBackend.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "LaunchKitBackend": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "LaunchKitBackend.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b1adca412ae8f4298f4d5131d29c9e4a26dc0f24e3c1fb773a06710426ca90e5.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "LaunchKitBackend.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "LaunchKitBackend.assets"
+      ],
+      "metadata": {
+        "/LaunchKitBackend/BackendVPC/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPC5F3A56B6"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet1Subnet2B870F46"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet1RouteTableC04F585C"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet1RouteTableAssociation8FAB5E8E"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet1DefaultRoute0CB01EBE"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet1EIPBE09E244"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet1NATGatewayB2B9B5E7"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet2Subnet26E891E3"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet2RouteTableFCDD5CDF"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet2RouteTableAssociation08744EE5"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet2DefaultRoute7B9CD519"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet2/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet2EIPDD2C7ECD"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PublicSubnet2/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPublicSubnet2NATGatewayAF1AFFB2"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PrivateSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPrivateSubnet1Subnet3D54F9BA"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PrivateSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPrivateSubnet1RouteTable46B481E4"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PrivateSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPrivateSubnet1RouteTableAssociationAD45EBF9"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PrivateSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPrivateSubnet1DefaultRouteBBE0142A"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PrivateSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPrivateSubnet2SubnetC87D8BE6"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PrivateSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPrivateSubnet2RouteTable9174E298"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PrivateSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPrivateSubnet2RouteTableAssociationE96138FE"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/PrivateSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCPrivateSubnet2DefaultRoute17987241"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCIGWBDB487F3"
+          }
+        ],
+        "/LaunchKitBackend/BackendVPC/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendVPCVPCGW1A2F763B"
+          }
+        ],
+        "/LaunchKitBackend/BackendCluster/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendCluster5086059C"
+          }
+        ],
+        "/LaunchKitBackend/TaskDef/TaskRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDefTaskRole1EDB4A67"
+          }
+        ],
+        "/LaunchKitBackend/TaskDef/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDef54694570"
+          }
+        ],
+        "/LaunchKitBackend/TaskDef/AppContainer/LogGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDefAppContainerLogGroup3E3EEE65"
+          }
+        ],
+        "/LaunchKitBackend/TaskDef/ExecutionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDefExecutionRoleB4775C97"
+          }
+        ],
+        "/LaunchKitBackend/TaskDef/ExecutionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDefExecutionRoleDefaultPolicy0DBB737A"
+          }
+        ],
+        "/LaunchKitBackend/BackendService": [
+          {
+            "type": "aws:cdk:warning",
+            "data": "minHealthyPercent has not been configured so the default value of 50% is used. The number of running tasks will decrease below the desired count during deployments etc. See https://github.com/aws/aws-cdk/issues/31705 [ack: @aws-cdk/aws-ecs:minHealthyPercent]",
+            "trace": [
+              "Annotations.addMessage (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:1608)",
+              "Annotations.addWarningV2 (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:825)",
+              "new BaseService (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\node_modules\\aws-cdk-lib\\aws-ecs\\lib\\base\\base-service.js:1:8100)",
+              "new FargateService (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\node_modules\\aws-cdk-lib\\aws-ecs\\lib\\fargate\\fargate-service.js:1:3551)",
+              "new BackendStack (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\lib\\backend-stack.ts:31:5)",
+              "Object.<anonymous> (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\bin\\launchkit.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1554:14)",
+              "Module.m._compile (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\node_modules\\ts-node\\src\\index.ts:1618:23)",
+              "node:internal/modules/cjs/loader:1706:10",
+              "Object.require.extensions.<computed> [as .ts] (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\node_modules\\ts-node\\src\\index.ts:1621:12)",
+              "Module.load (node:internal/modules/cjs/loader:1289:32)",
+              "Function._load (node:internal/modules/cjs/loader:1108:12)",
+              "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+              "wrapModuleLoad (node:internal/modules/cjs/loader:220:24)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+              "phase4 (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\node_modules\\ts-node\\src\\bin.ts:649:14)",
+              "bootstrap (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\node_modules\\ts-node\\src\\bin.ts:95:10)",
+              "main (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\node_modules\\ts-node\\src\\bin.ts:55:10)",
+              "Object.<anonymous> (C:\\Users\\samwi\\Desktop\\LaunchKit\\infrastructure\\cdk\\node_modules\\ts-node\\src\\bin.ts:800:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1554:14)",
+              "Object.<anonymous> (node:internal/modules/cjs/loader:1706:10)",
+              "Module.load (node:internal/modules/cjs/loader:1289:32)",
+              "Function._load (node:internal/modules/cjs/loader:1108:12)",
+              "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+              "wrapModuleLoad (node:internal/modules/cjs/loader:220:24)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+              "node:internal/main/run_main_module:36:49"
+            ]
+          }
+        ],
+        "/LaunchKitBackend/BackendService/Service": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendService7A4224EE"
+          }
+        ],
+        "/LaunchKitBackend/BackendService/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendServiceSecurityGroup0865F57D"
+          }
+        ],
+        "/LaunchKitBackend/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/LaunchKitBackend/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/LaunchKitBackend/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/LaunchKitBackend/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "LaunchKitBackend"
+    },
+    "LaunchKitFrontend.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "LaunchKitFrontend.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "LaunchKitFrontend": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "LaunchKitFrontend.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/73d6232c59808179fcb585f9a7863242ff7cbcba70088a7110339be041005049.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "LaunchKitFrontend.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "LaunchKitFrontend.assets"
+      ],
+      "metadata": {
+        "/LaunchKitFrontend/FrontendBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FrontendBucketEFE2E19C"
+          }
+        ],
+        "/LaunchKitFrontend/FrontendBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FrontendBucketPolicy1DFF75D9"
+          }
+        ],
+        "/LaunchKitFrontend/AppDistribution/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AppDistributionFE05A23E"
+          }
+        ],
+        "/LaunchKitFrontend/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/LaunchKitFrontend/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/LaunchKitFrontend/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/LaunchKitFrontend/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "LaunchKitFrontend"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  },
+  "minimumCliVersion": "2.1005.0"
+}
