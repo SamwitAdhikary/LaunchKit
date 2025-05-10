@@ -24,3 +24,12 @@ pnpm-debug.log*
 
 # Docker
 docker-compose.override.yml
+
+# Terraform files
+**/.terraform/*
+*.tfstate
+*.tfstate.backup
+**/.terraform.lock.hcl
+
+# Provider binaries
+**/providers/registry.terraform.io/
