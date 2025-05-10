@@ -1,11 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
+import logging
 
 from ...deps import get_db
 from ....schemas.auth import UserCreate, Token, UserOut
 from ....models.user import User
 from ....utils.jwt import create_access_token
+
+logger = logging.getLogger("launchkit.auth")
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 router = APIRouter(tags=["Authentication"])
@@ -31,8 +34,11 @@ def register(user_in: UserCreate, db: Session = Depends(get_db)):
 
 @router.post("/login", response_model=Token)
 def login(user_in: UserCreate, db: Session = Depends(get_db)):
+    logger.info(f"Attempting login for {user_in.email}")
     user = db.query(User).filter(User.email == user_in.email).first()
     if not user or not verify_password(user_in.password, user.hashed_password):
+        logger.warning(f"Login failed for {user_in.email}")
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Credentials")
     access_token = create_access_token(subject=str(user.id))
+    logger.info(f"Login successful for {user_in.email}")
     return {"access_token": access_token}

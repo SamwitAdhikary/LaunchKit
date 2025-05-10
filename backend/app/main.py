@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from .api.v1.router import api_v1_router
+import logging
 
 app = FastAPI(
     title="LaunchKit API",
@@ -9,3 +10,4 @@ app = FastAPI(
 )
 
 app.include_router(api_v1_router)
+logging.basicConfig(level=logging.INFO)
