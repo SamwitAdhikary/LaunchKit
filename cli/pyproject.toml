@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "launchkit-cli"
+version = "0.1.0"
+description = "LaunchKit CLI - deploy and manage apps on AWS"
+authors = ["Samwit Adhikary <samwitadhikary2@gmail.com>"]
+license = "MIT"
+packages = [{ include = "launchkit_cli" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = "0.9"
+httpx = "^0.24"
+keyring = "^23.13"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.4"
+coverage = "^7.1"
+flake8 = "^6.0"
+black = "^24.0"
