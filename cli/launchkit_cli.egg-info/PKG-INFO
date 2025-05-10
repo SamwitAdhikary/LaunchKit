@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: launchkit-cli
+Version: 0.1.0
+Summary: LaunchKit CLI
+Author: Your Name
+Author-email: you@example.com
+License: MIT
+Requires-Dist: typer[all]>=0.9
+Requires-Dist: httpx>=0.24
+Requires-Dist: keyring>=23.13
+Dynamic: author
+Dynamic: author-email
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: summary
