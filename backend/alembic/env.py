@@ -1,37 +1,35 @@
-import os
-import sys
+import os, sys
 from logging.config import fileConfig
-
 from sqlalchemy import engine_from_config, pool
 from alembic import context
 
-# ensure app module is importable
-sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "app")))
+# ─── Make sure ‘backend/’ is on Python path ────────────────
+HERE = os.path.dirname(__file__)          # …/backend/alembic
+BACKEND = os.path.abspath(os.path.join(HERE, os.pardir))  # …/backend
+sys.path.insert(0, BACKEND)
+# ────────────────────────────────────────────────────────────
 
-# this is the Alembic Config object
+import app.models # noqa
+from app.models.base import Base      # noqa: your Base
+from app.config import settings       # noqa: your DB URL
+
 config = context.config
-
-# Interpret the config file for Python logging.
 fileConfig(config.config_file_name)
-
-# Import your SQLAlchemy Base metadata
-from app.models.base import Base  # noqa
 target_metadata = Base.metadata
 
 def run_migrations_offline():
-    url = config.get_main_option("sqlalchemy.url")
+    url = settings.DATABASE_URL
     context.configure(
-        url=url, target_metadata=target_metadata, literal_binds=True
+        url=url,
+        target_metadata=target_metadata,
+        literal_binds=True,
     )
     with context.begin_transaction():
         context.run_migrations()
 
 def run_migrations_online():
-    connectable = engine_from_config(
-        config.get_section(config.config_ini_section),
-        prefix="sqlalchemy.",
-        poolclass=pool.NullPool,
-    )
+    from sqlalchemy import create_engine
+    connectable = create_engine(settings.DATABASE_URL, poolclass=pool.NullPool)
     with connectable.connect() as connection:
         context.configure(connection=connection, target_metadata=target_metadata)
         with context.begin_transaction():
